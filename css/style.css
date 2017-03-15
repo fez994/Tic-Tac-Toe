@@ -1,0 +1,28 @@
+td {
+		width: 100px;
+		height: 100px;
+		
+	}
+
+
+	.vertical {
+		border-left: 1px solid black;
+		border-right: 1px solid black;
+	}
+
+	.bottom-up {
+		border-bottom: 1px solid black;
+		border-top: 1px solid black;
+	}
+
+
+	table {
+		margin: auto;
+	}
+	
+
+	h1 {
+		text-align: center;
+		letter-spacing: 1em;
+		text-transform: uppercase;
+	}
