@@ -1,7 +1,7 @@
 td {
 		width: 100px;
 		height: 100px;
-		
+		text-align: center;
 	}
 
 
@@ -26,3 +26,12 @@ td {
 		letter-spacing: 1em;
 		text-transform: uppercase;
 	}
+
+
+.container {
+	text-align: center;
+}
+
+#table {
+	padding-top: 5%;
+}
