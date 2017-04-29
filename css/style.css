@@ -35,3 +35,7 @@ td {
 #table {
 	padding-top: 5%;
 }
+
+.hidden {
+	display: none;
+}
