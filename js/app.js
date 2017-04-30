@@ -40,22 +40,24 @@ $(document).ready(function() {
 		 } else {
 		 	aiChoice = "X";
 		 } 
-		// Generate a random number
-		generateRandomNumber();
 		// Checks if the id of the <td> is equal to the random number, if it is, and if the <td> does not
 		// containe "X" or "O", the function will place a "X" on the table cell
-		for(var i = 0; i < td.length && i <= random; i++) {
-			if(random == td[i].id) {
-			if(td[i].innerHTML !== "X" || td[i].innerHTML !== "O") {
-				td[i].innerHTML = aiChoice;	
-			}	
-			// Else (Meaning the random number equal a <td> with a "X" or "O" inside) i will execute the function again,
-			// witch will generate a random number and try again 
-			} else {
-			tryAgain();
-			} 
+		var myCell;
+
+		do {
+   			generateRandomNumber();
+   			myCell = $('#' + random);	
+   			
 		} 
-	}
+		/* while (myCell.innerHTML === "X" || myCell.innerHTML === "O"); */ 
+		while(myCell.html() === "X" || myCell.html() === "O");
+		myCell.html(aiChoice);
+
+		console.log(myCell);
+		}
+		
+		
+
 
 
 	function generateRandomNumber() {
@@ -65,6 +67,7 @@ $(document).ready(function() {
 	function tryAgain() {
 		aiMove();
 	}
+
 
 
 }); // end document ready
