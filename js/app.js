@@ -40,8 +40,8 @@ $(document).ready(function() {
 		 } else {
 		 	aiChoice = "X";
 		 } 
-		// Checks if the id of the <td> is equal to the random number, if it is, and if the <td> does not
-		// containe "X" or "O", the function will place a "X" on the table cell
+		
+
 		var myCell;
 
 		do {
@@ -53,10 +53,65 @@ $(document).ready(function() {
 		while(myCell.html() === "X" || myCell.html() === "O");
 		myCell.html(aiChoice);
 
-		console.log(myCell);
+		//console.log(myCell);
+		checkWin();
 		}
 		
 		
+
+	function checkWin() {
+		var cell = $('td');
+		if(
+		   // Orizontal Conditions
+		   cell[0].innerHTML === "X" && cell[1].innerHTML === "X" && cell[2].innerHTML === "X" ||
+		   cell[3].innerHTML === "X" && cell[4].innerHTML === "X" && cell[5].innerHTML === "X" ||
+		   cell[6].innerHTML === "X" && cell[7].innerHTML === "X" && cell[8].innerHTML === "X" ||
+		   // Vertical Conditions
+		   cell[0].innerHTML === "X" && cell[3].innerHTML === "X" && cell[6].innerHTML === "X" ||
+		   cell[1].innerHTML === "X" && cell[4].innerHTML === "X" && cell[7].innerHTML === "X" ||
+		   cell[2].innerHTML === "X" && cell[5].innerHTML === "X" && cell[8].innerHTML === "X" ||
+		   // Oblique Conditions
+		   cell[0].innerHTML === "X" && cell[4].innerHTML === "X" && cell[8].innerHTML === "X" ||
+		   cell[2].innerHTML === "X" && cell[4].innerHTML === "X" && cell[6].innerHTML === "X"
+		   ) {
+			console.log("X WON");
+		}
+
+		else if(
+			// Orizontal Conditions
+		   cell[0].innerHTML === "O" && cell[1].innerHTML === "O" && cell[2].innerHTML === "O" ||
+		   cell[3].innerHTML === "O" && cell[4].innerHTML === "O" && cell[5].innerHTML === "O" ||
+		   cell[6].innerHTML === "O" && cell[7].innerHTML === "O" && cell[8].innerHTML === "O" ||
+		   // Vertical Conditions
+		   cell[0].innerHTML === "O" && cell[3].innerHTML === "O" && cell[6].innerHTML === "O" ||
+		   cell[1].innerHTML === "O" && cell[4].innerHTML === "O" && cell[7].innerHTML === "O" ||
+		   cell[2].innerHTML === "O" && cell[5].innerHTML === "O" && cell[8].innerHTML === "O" ||
+		   // Oblique Conditions
+		   cell[0].innerHTML === "O" && cell[4].innerHTML === "O" && cell[8].innerHTML === "O" ||
+		   cell[2].innerHTML === "O" && cell[4].innerHTML === "O" && cell[6].innerHTML === "O"
+		   ) {
+		   	console.log("O WON");
+		}
+
+		
+		// Winning conditions
+
+		// Orizontal conditions
+		// cells[0] && cells[1] && cells[2]
+		// cells[3] && cells[4] && cells[5]
+		// cells[6] && cells[7] && cells[8]
+
+		// Vertical conditions
+		// cells[0] && cells[3] && cells[6]
+		// cells[1] && cells[4] && cells[7]
+		// cells[2] && cells[5] && cells[8]
+
+		// Oblique conditions
+		// cells[0] && cells[4] && cells[8]
+		// cells[2] && cells[4] && cells[6]
+
+
+	} // end checkwin Function
 
 
 
@@ -64,107 +119,10 @@ $(document).ready(function() {
 		random = Math.floor(Math.random() * 9);
 	}
 
-	function tryAgain() {
-		aiMove();
-	}
 
 
 
 }); // end document ready
-
-
-
-/*
-// variables
-var cell;
-var x = document.querySelector('#x');
-var o = document.querySelector('#o');
-var table = document.querySelector('table');
-var playerChoice;
-var aiChoice;
-var random;
-var cell;
-
-// asking player to choose beetween X or O
-x.addEventListener('click', function() {
-	playerChoice = "X";
-	x.disabled = true;
-	o.disabled = true;
-	table.classList.remove('hidden');
-	cell = document.querySelectorAll('td');
-	playerMove();
-});
-
-o.addEventListener('click', function() {
-	playerChoice = "O";
-	x.disabled = true;
-	o.disabled = true;
-	table.classList.remove('hidden');
-	cell = document.querySelectorAll('td');
-	playerMove();
-});
-
-
-function playerMove() {
-	for(var i =0; i < cell.length; i++) {
-		cell[i].addEventListener("click", function() {
-			if(this.innerHTML === "X" || this.innerHTML === "O") {
-				alert("You can't do that mate");
-			} else {
-				this.innerHTML = playerChoice;
-				aiMove();
-			}
-		});
-	 
-	}
-	
-}
-
-
-function aiMove() {
-	generateRandomNumber();
-	if(playerChoice === "X") {
-		aiChoice = "O";
-	} else {
-		aiChoice = "X";
-	}
-
-	for(var i = 0; i < cell.length; i++) {
-		//console.log(cell[i]);
-		if(cell[i].id == random) {
-			if(cell[i].innerHTML !== "X" || cell[i].innerHTML !== "O"){
-				cell[i].innerHTML = aiChoice;
-				break;
-			} 
-		}
-		else {
-			//tryAgain();
-			console.log(random);
-		}
-	}
-
-}
-
-
-function generateRandomNumber() {
-	
-}
-
-
-
-function tryAgain() {
-	aiMove();
-	//generateRandomNumber();
-	
-}
-
-*/
-
-
-
-
-
-
 
 
 
