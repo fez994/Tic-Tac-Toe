@@ -7,7 +7,6 @@ $(document).ready(function() {
 	var random;
 
 
-
 	$('#x').on("click", function() {
 		playerChoice = playerChoice[0];
 		this.disabled = true;
@@ -28,6 +27,7 @@ $(document).ready(function() {
 
 	$('td').on("click", function() {
 	 $(this).html(playerChoice);
+	 checkWin();
 	 aiMove();
 	});
 
@@ -54,13 +54,14 @@ $(document).ready(function() {
 		myCell.html(aiChoice);
 
 		//console.log(myCell);
-		checkWin();
+		checkWin();	
 		}
 		
 		
 
 	function checkWin() {
 		var cell = $('td');
+		var win = "<h3> X WON! </h3>";
 		if(
 		   // Orizontal Conditions
 		   cell[0].innerHTML === "X" && cell[1].innerHTML === "X" && cell[2].innerHTML === "X" ||
@@ -74,7 +75,8 @@ $(document).ready(function() {
 		   cell[0].innerHTML === "X" && cell[4].innerHTML === "X" && cell[8].innerHTML === "X" ||
 		   cell[2].innerHTML === "X" && cell[4].innerHTML === "X" && cell[6].innerHTML === "X"
 		   ) {
-			console.log("X WON");
+			$('.Win').html(win);
+			$('.reset').removeClass('hidden');
 		}
 
 		else if(
@@ -90,25 +92,11 @@ $(document).ready(function() {
 		   cell[0].innerHTML === "O" && cell[4].innerHTML === "O" && cell[8].innerHTML === "O" ||
 		   cell[2].innerHTML === "O" && cell[4].innerHTML === "O" && cell[6].innerHTML === "O"
 		   ) {
-		   	console.log("O WON");
+		   	win = "<h3> O WON! </h3>";
+		   $(".Win").html(win);
+		   $('td').off("click");
+		   $('.reset').removeClass('hidden');
 		}
-
-		
-		// Winning conditions
-
-		// Orizontal conditions
-		// cells[0] && cells[1] && cells[2]
-		// cells[3] && cells[4] && cells[5]
-		// cells[6] && cells[7] && cells[8]
-
-		// Vertical conditions
-		// cells[0] && cells[3] && cells[6]
-		// cells[1] && cells[4] && cells[7]
-		// cells[2] && cells[5] && cells[8]
-
-		// Oblique conditions
-		// cells[0] && cells[4] && cells[8]
-		// cells[2] && cells[4] && cells[6]
 
 
 	} // end checkwin Function
@@ -120,12 +108,19 @@ $(document).ready(function() {
 	}
 
 
+	// reset btn
+
+	$('.reset').on("click", function() {
+		var cell = $('td');
+		var i ;
+		for( i = 0; i < cell.length; i++) {
+			var empty = "";
+			$(this).html(empty);
+		}
+	});
 
 
 }); // end document ready
-
-
-
 
 
 
